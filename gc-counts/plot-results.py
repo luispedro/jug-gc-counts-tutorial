@@ -3,7 +3,7 @@ from matplotlib import style
 
 from jug import value, init
 style.use('default')
-_,jugspace = init('jugfile3.py', 'jugfile3.jugdata')
+_,jugspace = init('jugfile.py', 'jugfile.jugdata')
 
 data = value(jugspace['final'])
 data = data.rename(index=lambda ix: ix.split('/')[1].split('.')[1], )
