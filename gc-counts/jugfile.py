@@ -11,10 +11,9 @@ def process(fna, ofile):
 
     r = []
     hs = []
-    with open(ofile, 'wt') as out:
-        for h,seq in fasta_iter(fna):
-            r.append(pd.Series(Counter(seq)))
-            hs.append(h)
+    for h,seq in fasta_iter(fna):
+        r.append(pd.Series(Counter(seq)))
+        hs.append(h)
     r = pd.DataFrame(r, index=hs)
     r.to_csv(ofile, sep='\t')
     return ofile
@@ -25,5 +24,5 @@ ifiles.sort()
 ofiles = []
 for i, fna in enumerate(ifiles):
     ofile = f'outputs/chunk{i:02}.tsv'
-    process(fna, ofile)
+    ofile = process(fna, ofile)
     ofiles.append(ofile)
