@@ -1,5 +1,14 @@
 # Jug GC counting tutorial
 
+To learn more about Jug, see the [Jug webpage](https://jug.rtfd.io/) or the Jug
+paper:
+
+> Coelho, L.P., (2017). Jug: Software for Parallel Reproducible Computation in
+> Python. Journal of Open Research Software. 5(1), p.30.
+>
+> [doi:10.5334/jors.161](https://doi.org/10.5334/jors.161)
+
+
 - `hello/`: basic hello world
 - `gc-counts/`: semi-realistitic example based on [GMGC](https://gmgc.embl.de/) data
 
