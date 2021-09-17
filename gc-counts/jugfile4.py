@@ -54,7 +54,7 @@ def plot_results(data):
         x.set_rotation(90)
 
     fig.tight_layout()
-    fig.savefig('gc-per-habitat__jugfile.pdf')
+    fig.savefig('gc-per-habitat-jugfile.pdf')
 
 ifiles = glob('demo-data/*.fna.gz')
 ifiles.sort()
