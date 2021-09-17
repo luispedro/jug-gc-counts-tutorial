@@ -7,7 +7,10 @@ def process(fna, ofile):
     import pandas as pd
     from fasta import fasta_iter
     from time import sleep
+    from os import makedirs
     sleep(4) # Pretend we are doing a lot of work
+
+    makedirs('outputs', exist_ok=True)
 
     r = []
     hs = []
