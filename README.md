@@ -15,11 +15,11 @@ paper:
 ## Dependencies
 
 ```bash
-conda create -n jug-tutorial python=3.8 Jug numpy pandas matplotlib
+conda create -n jug-tutorial python=3.9 Jug numpy pandas matplotlib ipython
 conda activate jug-tutorial
 ```
 
-Here we used Python `3.8`, but any recent version (>`3.6`) works
+Here we used Python `3.9`, but any recent version (>`3.6`) works
 
 
 # Metadata
