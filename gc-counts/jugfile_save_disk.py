@@ -8,20 +8,25 @@ def process(fna):
     from collections import Counter
     from fasta import fasta_iter
     from time import sleep
-    from os import makedirs
+    from os import makedirs, path
     sleep(4) # Pretend we are doing a lot of work
 
     makedirs('outputs', exist_ok=True)
+    ofile = path.join('outputs',
+            fna.split('/')[-1].replace('.fna.gz', '.tsv.gz'))
 
     r = []
     hs = []
     for h,seq in fasta_iter(fna):
         r.append(pd.Series(Counter(seq)))
         hs.append(h)
-    return pd.DataFrame(r, index=hs)
+    r = pd.DataFrame(r, index=hs)
+    r.to_csv(ofile, sep='\t')
+    return ofile
 
 @TaskGenerator
-def gc_fraction(c):
+def gc_fraction(counts_fname):
+    c = pd.read_table(counts_fname, index_col=0)
     gcf = c.eval('GCf = (G+C)/(G+C+T+A)')['GCf']
     return gcf.describe()
 
@@ -58,8 +63,8 @@ ifiles.sort()
 
 partials = {}
 for i, fna in enumerate(ifiles):
-    per_seq = process(fna)
-    partials[fna] = gc_fraction(per_seq)
+    ofile = process(fna)
+    partials[fna] = gc_fraction(ofile)
 
 final = build_table(partials)
 plot_results(final)

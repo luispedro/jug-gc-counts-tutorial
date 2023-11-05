@@ -2,8 +2,6 @@
 
 set -ev
 
-mkdir -p outputs
-
 cp jugfile1.py jugfile.py
 jug execute
 
@@ -16,4 +14,4 @@ jug execute
 cp jugfile4.py jugfile.py
 jug execute
 
-python plot-results.py 
+python plot-results.py
